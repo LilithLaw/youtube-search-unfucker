@@ -23,9 +23,9 @@ document.addEventListener("yt-navigate-finish", function() {
     // Get the current URL of the page.
     const fuckedURL = window.location.href;
     
-    // Check if the current URL is a search page and if the "&sp=CAASAhAB" string is not already in the URL.
-    if (((/[?&]sp=CAASAhAB/.test(location.search) === false)) && ((/search/.test(fuckedURL) === true))) {
-        // Set the "redirecting" variable to "true" before performing the redirection.
+    // Check if the current URL is a search page and no other "&sp=SEARCH_FILTER" is found in the URL.
+    if (((/[?&](sp|t|ctoken)=[^&]*/.test(location.search) === false)) && ((/search/.test(fuckedURL) === true))) {
+      // Set the "redirecting" variable to "true" before performing the redirection.
         redirecting = true;
         // Create the new URL by appending the "&sp=CAASAhAB" string to the current URL.
         const newURL = fuckedURL + "&sp=CAASAhAB";
